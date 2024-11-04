@@ -1,0 +1,23 @@
+html {
+    margin-top: 0 !important;
+}
+
+@media screen and (max-width: 500px) {
+    .resPc {
+        display: none !important;
+    }
+
+    .resSp {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 501px) {
+    .resPc {
+        display: block !important;
+    }
+
+    .resSp {
+        display: none !important;
+    }
+}
