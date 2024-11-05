@@ -1225,7 +1225,7 @@
 #chat footer::before {
   content: "";
   position: absolute;
-  background: url("/wp-content/themes/fswp/images/foot_town.png") repeat-x center top;
+  background: url("../images/foot_town.png") repeat-x center top;
   top: -91px;
   left: 0;
   width: 100%;
@@ -1393,13 +1393,13 @@
   left: 25%;
   width: 640px;
   height: 400px;
-  background: url("/wp-content/themes/fswp/images/bg-popup.png") 0% 0% no-repeat padding-box;
+  background: url("../images/bg-popup.png") 0% 0% no-repeat padding-box;
   background-color: white;
   opacity: 1;
 }
 
 #chat .modalchat .modal-info>.close {
-  background: url("/wp-content/themes/fswp/images/close-btn.png");
+  background: url("../images/close-btn.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 32px;
@@ -1410,7 +1410,7 @@
 }
 
 #chat .modalchat .modal-info .title {
-  background: url("/wp-content/themes/fswp/images/main-catch.png");
+  background: url("../images/main-catch.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 336px;
@@ -1420,7 +1420,7 @@
 
 #chat .modalchat .modal-info .main-content {
   position: relative;
-  background: url("/wp-content/themes/fswp/images/img-mockup.png");
+  background: url("../images/img-mockup.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 420px;
@@ -1430,7 +1430,7 @@
 
 #chat .modalchat .modal-info .main-content .sub-catch {
   position: absolute;
-  background: url("/wp-content/themes/fswp/images/sub-catch.png");
+  background: url("../images/sub-catch.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 135px;
@@ -1463,7 +1463,7 @@
   height: 71px;
   margin: auto;
   border: none;
-  background: transparent url("/wp-content/themes/fswp/images/prev-btn.png") no-repeat;
+  background: transparent url("../images/prev-btn.png") no-repeat;
   cursor: pointer;
   border-radius: 6px;
   box-shadow: 0 5px 0 0 #b55300;
@@ -1498,7 +1498,7 @@
   }
 
   #chat .modalchat .modal-info .main-content {
-    background: url("/wp-content/themes/fswp/images/img-mockup_sp.png");
+    background: url("../images/img-mockup_sp.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 172px;
@@ -1507,7 +1507,7 @@
   }
 
   #chat .modalchat .modal-info .main-content .sub-catch {
-    background: url("/wp-content/themes/fswp/images/sub-catch-sp.png");
+    background: url("../images/sub-catch-sp.png");
     background-repeat: no-repeat;
     background-size: contain;
     margin: -20px 5vw 0px;
@@ -1523,7 +1523,7 @@
   }
 
   #chat .modalchat .modal-info .btn-area button {
-    background: transparent url("/wp-content/themes/fswp/images/prev-btn-sp.png") no-repeat;
+    background: transparent url("../images/prev-btn-sp.png") no-repeat;
     background-size: contain;
     max-width: 308px;
     height: 51px;
