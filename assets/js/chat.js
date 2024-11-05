@@ -522,7 +522,7 @@ function submitForm() {
     $.ajax({
       async: false,
       type: "post",
-      url: "/admin/requests/check_phone_chat_pronuri",
+      url: "/thanks.htm",
       data: {
         phone: phonenum,
         email: email,
@@ -597,7 +597,7 @@ function getCities() {
   $.ajax({
     async: false,
     type: "post",
-    url: "/admin/requests/get_cities_pronuri",
+    url: "/thanks.htm",
     data: {
       code: prefectureCode,
     },
