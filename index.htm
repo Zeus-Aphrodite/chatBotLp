@@ -31,26 +31,6 @@
 
 	<link rel='dns-prefetch' href='//s.w.org'>
 	<link rel="canonical" href="index.htm">
-	<!-- Optimize Next -->
-	<script>
-		(function (p, r, o, j, e, c, t, g) {
-			p['_' + t] = {};
-			g = r.createElement('script');
-			g.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-' + t;
-			r[o].prepend(g);
-			g = r.createElement('style');
-			g.innerText = '.' + e + t + '{visibility:hidden!important}';
-			r[o].prepend(g);
-			r[o][j].add(e + t);
-			setTimeout(function () {
-				if (r[o][j].contains(e + t)) {
-					r[o][j].remove(e + t);
-					p['_' + t] = 0
-				}
-			}, c)
-		})(window, document, 'documentElement', 'classList', 'loading', 2000, 'KFMDQD97')
-	</script>
-	<!-- End Optimize Next -->
 	<meta name="robots" content="noindex">
 </head>
 
@@ -63,9 +43,9 @@
 	<div id="chat">
 		<header>
 			<div class="medal">
-				<img src="assets/images/tosho-medal-img.png" alt="上場企業 安心の東証プライム"
+				<img src="assets/images/tosho-medal-img.png" alt=""
 				class="img-responsive">
-				<img src="assets/images/estimate-medal-img.png" alt="3万人突破 見積依頼者数"
+				<img src="assets/images/estimate-medal-img.png" alt=""
 				class="img-responsive">
 			</div>
 			<div class="img-home">
@@ -157,50 +137,7 @@
 						</div>
 						<!-- {{-- 質問 1 end --}} -->
 
-						<!-- {{-- 質問 2 start --}} -->
-						<div class="question_sec no_display man_question">
-							<!-- {{-- 質問文 --}} -->
-							<div class="question chat" id="start_question">
-								<p class="icon"><img src="assets/images/img-nakamura.png"></p>
-								<div class="man_txt">
-									<span>外壁塗装コンシェルジュ仲村</span>
-									<p>気になる箇所はどちらでしょうか？</p>
-								</div>
-							</div>
-							<!-- {{-- 答え --}} -->
-							<div class="answer chat">
-								<!-- {{-- 入力値を表示 --}} -->
-								<div class="ans_display no_display">
-									<div class="ans_balloon">
-										<span class="readed">既読</span>
-										<div class="message-pop"><i></i><i></i><i></i></div>
-										<p style="display: none;">
-											<span class="insert_answer"></span>
-										</p>
-									</div>
-								</div>
-								<!-- {{-- 入力欄 --}} -->
-								<div class="ans_input" style="opacity: 0">
-									<div class="input_radio_txt ans_val">
-										<input type="radio" class="radio_img form-input" name="data[work_id]"
-											id="quote_requests_works_work_id_1" value="1" data="1">
-										<label for="quote_requests_works_work_id_1" class="full_label">
-											<p>外壁</p>
-										</label>
-										<input type="radio" class="radio_img form-input" name="data[work_id]"
-											id="quote_requests_works_work_id_2" value="2" data="2">
-										<label for="quote_requests_works_work_id_2" class="full_label">
-											<p>屋根</p>
-										</label>
-										<input type="radio" class="radio_img form-input" name="data[work_id]"
-											id="quote_requests_works_work_id_3" value="3" data="3">
-										<label for="quote_requests_works_work_id_3" class="full_label">
-											<p>外壁と屋根</p>
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 						<!-- 2.1 -->
 						<div class="question_sec no_display man_question" id="work_id_outwall">
 							<!-- {{-- 質問文 --}} -->
@@ -208,7 +145,7 @@
 								<p class="icon"><img src="assets/images/img-nakamura.png"></p>
 								<div class="man_txt">
 									<span>外壁塗装コンシェルジュ仲村</span>
-									<p>外壁はどのような工事をご希望ですか？</p>
+									<p>どのような工事をご希望ですか？</p>
 								</div>
 							</div>
 							<!-- {{-- 答え --}} -->
@@ -229,67 +166,48 @@
 										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
 											id="quote_requests_works_work_id_outwall_1" value="1" data="1">
 										<label for="quote_requests_works_work_id_outwall_1" class="full_label">
-											<p>塗装</p>
+											<p>外壁塗装</p>
 										</label>
 										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
 											id="quote_requests_works_work_id_outwall_2" value="2" data="2">
 										<label for="quote_requests_works_work_id_outwall_2" class="full_label">
-											<p>張り替え</p>
+											<p>外壁張り替え</p>
 										</label>
 										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
 											id="quote_requests_works_work_id_outwall_3" value="3" data="3">
 										<label for="quote_requests_works_work_id_outwall_3" class="full_label">
-											<p>補修</p>
+											<p>屋根塗装</p>
+										</label>
+										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
+											id="quote_requests_works_work_id_outwall_4" value="4" data="4">
+										<label for="quote_requests_works_work_id_outwall_4" class="full_label">
+											<p>屋根張り替え</p>
+										</label>
+										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
+											id="quote_requests_works_work_id_outwall_5" value="5" data="5">
+										<label for="quote_requests_works_work_id_outwall_5" class="full_label">
+											<p>外壁と屋根の塗装</p>
+										</label>
+										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
+											id="quote_requests_works_work_id_outwall_6" value="6" data="6">
+										<label for="quote_requests_works_work_id_outwall_6" class="full_label">
+											<p>外壁と屋根の張り替え</p>
+										</label>
+										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
+											id="quote_requests_works_work_id_outwall_7" value="7" data="7">
+										<label for="quote_requests_works_work_id_outwall_7" class="full_label">
+											<p>雨漏り・防水工事</p>
+										</label>
+										<input type="radio" class="radio_img form-input" name="data[work_id_outwall]"
+											id="quote_requests_works_work_id_outwall_8" value="8" data="8">
+										<label for="quote_requests_works_work_id_outwall_8" class="full_label">
+											<p>その他</p>
 										</label>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- 2.2 -->
-						<div class="question_sec no_display man_question" id="work_id_roof">
-							<!-- {{-- 質問文 --}} -->
-							<div class="question chat" id="start_question">
-								<p class="icon"><img src="assets/images/img-nakamura.png"></p>
-								<div class="man_txt">
-									<span>外壁塗装コンシェルジュ仲村</span>
-									<p>屋根はどのような工事をご希望ですか？</p>
-								</div>
-							</div>
-							<!-- {{-- 答え --}} -->
-							<div class="answer chat">
-								<!-- {{-- 入力値を表示 --}} -->
-								<div class="ans_display no_display">
-									<div class="ans_balloon">
-										<span class="readed">既読</span>
-										<div class="message-pop"><i></i><i></i><i></i></div>
-										<p style="display: none;">
-											<span class="insert_answer"></span>
-										</p>
-									</div>
-								</div>
-								<!-- {{-- 入力欄 --}} -->
-								<div class="ans_input" style="opacity: 0">
-									<div class="input_radio_txt ans_val">
-										<input type="radio" class="radio_img form-input" name="data[work_id_roof]"
-											id="quote_requests_works_work_id_roof_1" value="1" data="1">
-										<label for="quote_requests_works_work_id_roof_1" class="full_label">
-											<p>塗装</p>
-										</label>
-										<input type="radio" class="radio_img form-input" name="data[work_id_roof]"
-											id="quote_requests_works_work_id_roof_2" value="2" data="2">
-										<label for="quote_requests_works_work_id_roof_2" class="full_label">
-											<p>張り替え</p>
-										</label>
-										<input type="radio" class="radio_img form-input" name="data[work_id_roof]"
-											id="quote_requests_works_work_id_roof_3" value="3" data="3">
-										<label for="quote_requests_works_work_id_roof_3" class="full_label">
-											<p>補修</p>
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- {{-- 質問 2 end --}} -->
+						
 
 						<!-- {{-- 質問 3 start --}} -->
 						<div class="question_sec no_display man_question">
