@@ -63,7 +63,10 @@ function activeBtn() {
 
 // 回答入力時、input_answerを発動
 $(".form-input").on("change", function () {
+  console.log("this is form input change");
+  
   setTimeout(input_answer, 400, $(this));
+
 });
 $("#form-input-phone").on("input", function () {
   activeBtn();
@@ -119,6 +122,13 @@ function addTextBeforeAnwser(data) {
 // 入力値を吹き出しに入れる処理 start
 function input_answer(element) {
   // 各値取得
+  console.log("this is big mother");
+  
+  console.log(
+    'adfadfadsfadsf', 
+    element.hasClass('searchCity__listItem')
+  );
+ 
   var queston_answer = element.closest(".question_sec"); //質問・回答欄全て
   var answer_input = element.closest(".ans_input"); //回答中の入力欄
   var answer_balloon = queston_answer.find(".ans_display"); //回答吹き出し欄
@@ -130,6 +140,8 @@ function input_answer(element) {
       .index(element.closest(".ans_input"));
     answer_balloon = answer_balloon.eq(positionG);
   }
+
+
   // show step 1
   if (element.attr("name") == 'data[building_type_id]') {
     if (element.attr("type") == "radio") {
@@ -333,7 +345,14 @@ function input_answer(element) {
     answer_input.addClass("no_display");
     display_text(answer_balloon, 1000);
   }
+  if(element.hasClass('searchCity__listItem')) {
+    let tmpResult = element.find('.searchCity__itemInner').attr("data-name");
+    console.log('tmpResult',tmpResult);
+    
+    answer_balloon.find(".insert_answer").text(tmpResult)
+  }
   display_newer();
+
 }
 // 入力値を吹き出しに入れる処理 end
 
@@ -529,7 +548,7 @@ function submitForm() {
         }
       },
       error: function () {
-        alert("An error has occurred!");
+        // alert("An error has occurred!");
       },
     });
     return false;
@@ -573,6 +592,8 @@ $(function () {
 });
 
 function getCities() {
+  console.log("this is getCities");
+  
   $.ajax({
     async: false,
     type: "post",
@@ -630,12 +651,16 @@ function getCities() {
       }
     },
     error: function (error) {
-      console.log(error);
-      alert("An error has occurred!");
+      // console.log(error);
+      // alert("An error has occurred!");
     },
   });
 }
-
+$('.searchCity__listItem').click(function(){
+  console.log("searchCity item clicked");
+  input_answer($(this))
+  
+})
 function setElementCenter(element) {
   element.css(
     "top",
