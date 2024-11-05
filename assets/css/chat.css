@@ -1636,13 +1636,13 @@ body {
   max-width: 984px;
   width: 90vw;
   height: 48px;
-  background: #efefef 0% 0% no-repeat padding-box;
+  background: #D9EAD3;
   opacity: 1;
   margin: 8px auto 0;
-  color: #D9EAD3;
+  color: #474747;
   text-align: center;
+  font-weight: 500;
   font-size: 17px;
-  font-weight: bold;
   padding: 12px 0;
   box-sizing: border-box;
 }
