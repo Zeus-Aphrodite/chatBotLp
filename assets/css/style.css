@@ -1,12 +1,35 @@
 html {
     margin-top: 0 !important;
 }
+.container{
+    max-width: 1440px;
+    margin: auto;
+}
+@media screen and (max-width: 1440px) {
+    .container{
+        max-width: 1024px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .container{
+        max-width: 768px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .container{
+        max-width: 425px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .container{
+        max-width: 375px;
+    }
+}
 
 @media screen and (max-width: 500px) {
     .resPc {
         display: none !important;
     }
-
     .resSp {
         display: block !important;
     }
