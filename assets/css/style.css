@@ -3,21 +3,28 @@ html {
 }
 .container{
     max-width: 1440px;
+    padding-top: 100px;
     margin: auto;
 }
 @media screen and (max-width: 1440px) {
     .container{
         max-width: 768px;
+    padding-top: 70px;
+
     }
 }
 @media screen and (max-width: 1024px) {
     .container{
         max-width: 425px;
+    padding-top: 50px;
+
     }
 }
 @media screen and (max-width: 768px) {
     .container{
         max-width: 375px;
+    padding-top: 10px;
+
     }
 }
 @media screen and (max-width: 425px) {
