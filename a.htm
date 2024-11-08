@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Email with EmailJS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form id="emailForm">
+        <input type="text" id="recipient_email" placeholder="Recipient Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Email</button>
+    </form>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "ZTPu_YnKVP3J45dvj",
+            });
+        })();
+
+
+        // Handle the form submission
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const templateParams = {
+                recipient_email: document.getElementById('recipient_email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+            };
+
+            emailjs.send('service_3sj3z5n', 'template_q8llddl', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Email sent successfully!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to send email. Please try again later.');
+                });
+        });
+    </script>
+</body>
+</html>
