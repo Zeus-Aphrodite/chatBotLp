@@ -45,11 +45,25 @@
 }
 
 @media (max-width: 750px) {
+  #chat header .medal {
+    width: 40vw;
+  }
+
+  #chat header .medal img {
+    width: 90%;
+  }
   #chat header .img-home {
     width: 40vw;
   }
 
   #chat header .img-home img {
+    width: 90%;
+  }
+  #chat header .img-info {
+    width: 30vw;
+  }
+
+  #chat header .img-info img {
     width: 90%;
   }
 
@@ -62,8 +76,8 @@
   }
 
   #chat header .medal img {
-    width: 75%;
-    height: 75%;
+    width: 50%;
+    height: 50%;
   }
 }
 
@@ -238,15 +252,7 @@
   justify-content: center;
 }
 @media screen and (max-width: 768px) {
-  .img-info img{
-    display: none;
-  }
-  .medal img{
-    display: none;
-  }
-  #chat header .medal{
-    width: 0;
-  }
+ 
 }
 #chat article .man_question .question .icon img {
   width: 100%;
