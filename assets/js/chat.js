@@ -29,7 +29,7 @@ $(window).on("load", function () {
 function activeBtn() {
   if ($(".chat01").length > 0) {
     if (
-      $("#form-input-mail").val() != "" &&
+      $("#form-input-name").val() != "" &&
       $("#form-input-phone").val() != "" &&
       validatePhoneNumber($("#form-input-phone").val())
     ) {
@@ -71,7 +71,7 @@ $(".form-input").on("change", function () {
 $("#form-input-phone").on("input", function () {
   activeBtn();
 });
-$("#form-input-mail").on("input", function () {
+$("#form-input-name").on("input", function () {
   activeBtn();
 });
 
@@ -337,7 +337,7 @@ function input_answer(element) {
     checkPhoneNumber();
   }
   if (
-    element.attr("name") != "data[email]" &&
+    element.attr("name") != "data[name]" &&
     element.attr("name") != "data[phone]" &&
     element.attr("name") != "data[study_status]"
   ) {
@@ -509,7 +509,7 @@ function validatePhoneNumber(phone) {
 // submit時電話番号チェック start
 function submitForm() {
   var phonenum = $("#form-input-phone").val();
-  var email = $("#form-input-mail").val();
+  var email = $("#form-input-name").val();
 
   //電話番号チェック
   if (phonenum != "" && phonenum != "") {
@@ -517,7 +517,7 @@ function submitForm() {
     $(".phoneErrMsg").text("");
     $("#form-input-phone").removeClass("has-error");
     $(".mailErrMsg").text("");
-    $("#form-input-mail").removeClass("has-error");
+    $("#form-input-name").removeClass("has-error");
     $(".cv_entry").prop("disabled", true);
     $.ajax({
       async: false,
@@ -533,7 +533,7 @@ function submitForm() {
         if (data.result == "error") {
           if (data.msg.email) {
             $(".mailErrMsg").text(data.msg.email[0]);
-            $("#form-input-mail").addClass("has-error");
+            $("#form-input-name").addClass("has-error");
           }
           if (data.msg.phone) {
             $(".phoneErrMsg").text(data.msg.phone[0]);
