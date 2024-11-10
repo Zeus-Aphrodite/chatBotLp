@@ -2174,7 +2174,7 @@
 								<div class="ans_input text-right" style="opacity: 0">
 									<div class="input_txt ans_val">
 										<div class="form-control">
-											<p>メールアドレス（任意）</p>
+											<p>お名前</p>
 											<input type="text" class="form-input" id="form-input-name"
 												name="data[name]" placeholder="お名前 例：外壁　花子
 												">
@@ -2231,6 +2231,12 @@
 	<!-- Event click to scroll to form -->
 	<script>
 		jQuery(function () {
+			$(".submitToRehome").click(function (){
+				event.preventDefault();
+				const name = document.getElementById('form-input-name').value;
+				sessionStorage.setItem('name', name); // Save to sessionStorage
+				window.location.href = "./thanks.htm"; // Redirect to thanks.htm
+			});
 			$(function () {
 				$(window).scroll(function () {
 					if ($(this).scrollTop() > 100) {
