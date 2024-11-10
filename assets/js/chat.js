@@ -63,7 +63,6 @@ function activeBtn() {
 
 // 回答入力時、input_answerを発動
 $(".form-input").on("change", function () {
-  console.log("this is form input change");
   
   setTimeout(input_answer, 400, $(this));
 
@@ -122,12 +121,7 @@ function addTextBeforeAnwser(data) {
 // 入力値を吹き出しに入れる処理 start
 function input_answer(element) {
   // 各値取得
-  console.log("this is big mother");
-  
-  console.log(
-    'adfadfadsfadsf', 
-    element.hasClass('searchCity__listItem')
-  );
+ 
  
   var queston_answer = element.closest(".question_sec"); //質問・回答欄全て
   var answer_input = element.closest(".ans_input"); //回答中の入力欄

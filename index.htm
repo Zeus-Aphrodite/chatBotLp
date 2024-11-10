@@ -2200,7 +2200,7 @@
 				<p class="notification_error error-msg" style="text-align: center; color: red"></p>
 				
 				<section>
-					<button type="button" class="cv_entry no_display submitToRehome" disabled="disabled">
+					<button type="submit" class="cv_entry no_display submitToRehome" disabled="disabled">
 						<p class="btn-submit-form">結果を見る</p>
 						<p class="icon"><span></span></p>
 					</button>
@@ -2231,11 +2231,19 @@
 	<!-- Event click to scroll to form -->
 	<script>
 		jQuery(function () {
-			$(".submitToRehome").click(function (){
-				event.preventDefault();
-				const name = document.getElementById('form-input-name').value;
-				sessionStorage.setItem('name', name); // Save to sessionStorage
-				window.location.href = "./thanks.htm"; // Redirect to thanks.htm
+			// $(".submitToRehome").click(function (){
+				
+			// 	event.preventDefault();
+			// 	const name = document.getElementById('form-input-name').value;
+			// 	sessionStorage.setItem('name', name); // Save to sessionStorage
+			// 	window.location.href = "./thanks.htm"; // Redirect to thanks.htm
+			// });
+			$('#formStoreChat').on('submit', function(e){
+				e.preventDefault();
+				
+				alert("外壁・屋根塗装補助金・相場情報に関して算定完了しました。担当者からお電話でご案内させていただきます。");
+				e.target.submit(); // Use the raw DOM element's submit method to avoid recursion
+
 			});
 			$(function () {
 				$(window).scroll(function () {
@@ -2249,6 +2257,41 @@
 		})
 		const ajaxUrl = "/";
 	</script>
+	  <script>
+        // Listen for the form submission event
+        document.getElementById('phone-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+            
+            // Get the phone number entered by the user
+            const phoneNumber = document.getElementById('phone-number').value;
+            
+            // Display the phone number (for now, we're just logging it)
+            console.log('Phone number submitted:', phoneNumber);
+
+            // Optionally, you can send the phone number to a backend (not done here)
+            // Example of sending the data using fetch
+            sendPhoneNumberToServer(phoneNumber);
+        });
+
+        function sendPhoneNumberToServer(phoneNumber) {
+            fetch('https://your-backend-endpoint.com/send-phone-number', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    phoneNumber: phoneNumber
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Phone number sent successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error sending phone number:', error);
+            });
+        }
+    </script>
 	<script type='text/javascript' src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type='text/javascript' src='./assets/js/chat.js'></script>
 	<script type='text/javascript' src='./assets/js/click.js'></script>
