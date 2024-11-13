@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -559,27 +559,27 @@
 								<div class="ans_input" style="opacity: 0">
 									<div class="input_radio_txt ans_val">
 										<input type="radio" class="radio_img form-input" name="data[building_age_id]"
-											id="building_age_id_0" value="〜5年">
+											id="building_age_id_0" value="1">
 										<label for="building_age_id_0" class="full_label">
 											<p>〜5年</p>
 										</label>
 										<input type="radio" class="radio_img form-input" name="data[building_age_id]"
-											id="building_age_id_1" value="6〜10年">
+											id="building_age_id_1" value="2">
 										<label for="building_age_id_1" class="full_label">
 											<p>6〜10年</p>
 										</label>
 										<input type="radio" class="radio_img form-input" name="data[building_age_id]"
-											id="building_age_id_2" value="11〜15年">
+											id="building_age_id_2" value="3">
 										<label for="building_age_id_2" class="full_label">
 											<p>11〜15年</p>
 										</label>
 										<input type="radio" class="radio_img form-input" name="data[building_age_id]"
-											id="building_age_id_3" value="16〜20年">
+											id="building_age_id_3" value="4">
 										<label for="building_age_id_3" class="full_label">
 											<p>16〜20年</p>
 										</label>
 										<input type="radio" class="radio_img form-input" name="data[building_age_id]"
-											id="building_age_id_4" value="21年以上">
+											id="building_age_id_4" value="5">
 										<label for="building_age_id_4" class="full_label">
 											<p>21年以上</p>
 										</label>
@@ -1144,25 +1144,6 @@
 		jQuery(function () {
 			$(".submitToRehome").click(function (event) {
 				event.preventDefault();
-				const buildingTypeRadio = $("input[name='data[building_type_id]']:checked").data("value");
-				const buildingTypeDropdown = $(".select-box").val();
-				const buildingTypeDropdownText = $(".select-box option:selected").text();
-				const workType = $("input[name='data[work_id_outwall]']:checked").next("label").find("p").text();
-				const studyStatus = $("input[name='data[study_status]']:checked").next("label").find("p").text();
-				const selectedFloor = $("input[name='data[floors]']:checked").val();
-				const selectedSquare = $("input[name='data[rough_square_id]']:checked").next("label").find("p").text();
-				const exteriorWallMaterial = document.querySelector("input[name='data[exterior_wall_material]']:checked");
-				const selectedMaterial = exteriorWallMaterial ? exteriorWallMaterial.value : "未選択";
-				const roofingMaterial = document.querySelector("input[name='data[roofing_material]']:checked");
-				const selectedRoofingMaterial = roofingMaterial ? roofingMaterial.value : "未選択";
-				const exteriorBuildingAge = document.querySelector("input[name='data[building_age_id]']:checked");
-				const selectedBuildingAge = exteriorBuildingAge ? exteriorBuildingAge.value : "未選択";
-				const exteriorEstimating = document.querySelector("input[name='data[estimating]']:checked");
-				const selectedEstimating = exteriorEstimating ? exteriorEstimating.value : "未選択";
-				const exteriorEstimatingAns = document.querySelector("input[name='data[estimating_ans]']:checked");
-				const selectedEstimatingAns = exteriorEstimatingAns ? exteriorEstimatingAns.value : "未選択";
-				const exteriorPrefecture = document.querySelector("input[name='data[prefecture_code]']:checked");
-				const selectedPrefecture = exteriorPrefecture ? exteriorPrefecture.value : "未選択";
 				const name = $("#form-input-name").val();
 				const phone = $("#form-input-phone").val();
 				// Handle the form submission
@@ -1172,21 +1153,8 @@
                 <h2>
 お客様が当社のサイト(gaihekidiagnose.com)をご利用いただきました。
 お客様の入力情報をお送りいたします。</h2>
-<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeRadio || "一戸建て以外"}</p>
-<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeDropdownText || "一戸建て"}</p>
-<p><strong>どのような工事をご希望ですか？</strong> ${workType || "Not selected"}</p>
-<p><strong>目的はどちらになりますか？</strong> ${studyStatus || "Not selected"}</p>                
-<p><strong>物件は何階建てですか？</strong> ${selectedFloor}</p>
-<p><strong>延床面積は、大体どのくらいですか？</strong> ${selectedSquare}</p>
-<p><strong>外壁材はどちらかおわかりでしょうか？</strong> ${selectedMaterial || "Not selected"}</p>
-<p><strong>
-屋根材はどちらかおわかりでしょうか？</strong> ${selectedRoofingMaterial || "Not selected"}</p>
-<p><strong>築年数はどれくらいですか？</strong> ${selectedBuildingAge || "Not selected"}</p>
-<p><strong>相場は、年々上昇しています。施工時期のご希望はありますか？</strong> ${selectedEstimating || "Not selected"}</p>
-<p><strong>これまで工事費用の見積もりをもらったことがありますか？</strong> ${selectedEstimatingAns || "Not selected"}</p>
-<p><strong>物件の所在地はどちらでしょうか？</strong> ${selectedPrefecture || "Not selected"}</p>
 
-<p><strong>お名前:</strong> ${name}</p>
+                <p><strong>お名前:</strong> ${name}</p>
                 <p><strong>電話番号(ショートメッセージ):</strong> ${phone}</p>
             </div>
         `;
@@ -1208,6 +1176,7 @@
 					});
 
 				alert("外壁・屋根塗装補助金・相場情報に関して算定完了しました。担当者からお電話でご案内させていただきます。");
+				e.target.submit(); // Use the raw DOM element's submit method to avoid recursion
 
 			});
 
