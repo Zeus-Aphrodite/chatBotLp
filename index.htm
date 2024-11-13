@@ -58,7 +58,7 @@
 		</header>
 
 		<article>
-			<form action="./thanks.htm" method="get" id="formStoreChat" class="js_save_data_rehome">
+			<form action="/" method="get" id="formStoreChat" class="js_save_data_rehome">
 				<section class="balloonbox">
 
 					<div class="main-info">
@@ -1201,6 +1201,8 @@
 					.then(function (response) {
 						console.log('成功!', response.status, response.text);
 						alert('メールが正常に送信されました!');
+						window.location.href = "./thanks.htm";
+
 					}, function (error) {
 						console.log('失敗...', error);
 						console.log(error);
@@ -1208,7 +1210,6 @@
 					});
 
 				alert("外壁・屋根塗装補助金・相場情報に関して算定完了しました。担当者からお電話でご案内させていただきます。");
-
 			});
 
 		})
