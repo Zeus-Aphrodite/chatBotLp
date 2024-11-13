@@ -2,7 +2,9 @@
 <html lang="ja">
 
 <head>
-
+	<script type='text/javascript' src='assets/js/jquery-3.3.1.min.js'></script>
+	<script type='text/javascript' src='assets/js/global-script.js?ver=5.3.18'></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -1105,7 +1107,7 @@
 				<p class="notification_error error-msg" style="text-align: center; color: red"></p>
 				
 				<section>
-					<button type="submit" class="cv_entry no_display submitToRehome" disabled="disabled">
+					<button type="button" class="cv_entry no_display submitToRehome" disabled="disabled">
 						<p class="btn-submit-form">結果を見る</p>
 						<p class="icon"><span></span></p>
 					</button>
@@ -1135,16 +1137,65 @@
 	
 	<!-- Event click to scroll to form -->
 	<script>
+		(function(){
+		emailjs.init({
+				publicKey: "6uqQTTzaRW7ClwYKh",
+			});
+		})();
 		jQuery(function () {
-			// $(".submitToRehome").click(function (){
+			$(".submitToRehome").click(function (){
+				event.preventDefault();
+				// Handle the form submission
+				console.log("clicked");
+				const emailContent = `
+					{{{
+				<div>
+					Thank you for contacting us at Reshop Navi Exterior Painting/Exterior Painting Concierge about the average cost of exterior wall and roof renovation.\n\n
+
+					Click here for the average cost. Please check here.\n
+					<a href="https://pronuri.com/market_price" target="_blank">https://pronuri.com/market_price</a>\n\n
+
+					※SMS However, we will send you the same item.\n
+					※We may contact you for confirmation.\n\n
+
+					Our "Reshop Navi" introduces reputable companies. If you would like an introduction, please wait for a professional advisor to contact you or contact us at the following number during business hours (10:00-21:00).\n\n
+
+					TEL: 0120-929-609\n
+					Mail: <a href="mailto:info@rehome-navi.com" target="_blank">info@rehome-navi.com</a>\n\n
+
+					━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n
+					Reshop Navi Management Office\n
+					(Management: Zigen Corporation)\n\n
+
+					〒105-0001\n
+					3-4-8 Toranomon, Minato-ku, Tokyo\n
+					Toll-free number: 0120-929-609 (10:00-21:00)\n
+					Tel: 03-4586-6580 Fax: 03-6432-0373\n
+					Mail: <a href="mailto:info@rehome-navi.com" target="_blank">info@rehome-navi.com</a>\n\n
+
+					※If you do not need future distribution, please apply from the URL below.\n
+					<a href="https://rehome-navi.com/package_estimates/mailstop/WXpOalptVTJaV1psWldFeFpUZGxNdz09" target="_blank">
+						https://rehome-navi.com/package_estimates/mailstop/WXpOalptVTJaV1psWldFeFpUZGxNdz09
+					</a>\n
+					━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+					</div>}}}
+				`;
 				
-			// 	event.preventDefault();
-			// 	const name = document.getElementById('form-input-name').value;
-			// 	sessionStorage.setItem('name', name); // Save to sessionStorage
-			// 	window.location.href = "./thanks.htm"; // Redirect to thanks.htm
-			// });
-			$('#formStoreChat').on('submit', function(e){
-				e.preventDefault();
+				const templateParams = {
+					recipient_email: "brilliantstar0202@gmail.com",
+					subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
+					message: emailContent,
+				};
+				
+				emailjs.send('service_3oeif96', 'template_awltb6r', templateParams)
+					.then(function(response) {
+						console.log('SUCCESS!', response.status, response.text);
+						alert('Email sent successfully!');
+					}, function(error) {
+						console.log('FAILED...', error);
+						console.log(error);
+						alert('Failed to send email. Please try again later.');
+					});
 				
 				alert("外壁・屋根塗装補助金・相場情報に関して算定完了しました。担当者からお電話でご案内させていただきます。");
 				e.target.submit(); // Use the raw DOM element's submit method to avoid recursion
@@ -1162,41 +1213,6 @@
 		})
 		const ajaxUrl = "/";
 	</script>
-	  <script>
-        // Listen for the form submission event
-        document.getElementById('phone-form').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent the form from submitting normally
-            
-            // Get the phone number entered by the user
-            const phoneNumber = document.getElementById('phone-number').value;
-            
-            // Display the phone number (for now, we're just logging it)
-            console.log('Phone number submitted:', phoneNumber);
-
-            // Optionally, you can send the phone number to a backend (not done here)
-            // Example of sending the data using fetch
-            sendPhoneNumberToServer(phoneNumber);
-        });
-
-        function sendPhoneNumberToServer(phoneNumber) {
-            fetch('https://your-backend-endpoint.com/send-phone-number', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    phoneNumber: phoneNumber
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Phone number sent successfully:', data);
-            })
-            .catch(error => {
-                console.error('Error sending phone number:', error);
-            });
-        }
-    </script>
 	<script type='text/javascript' src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type='text/javascript' src='./assets/js/chat.js'></script>
 	<script type='text/javascript' src='./assets/js/click.js'></script>
