@@ -1138,7 +1138,7 @@
 	<script>
 		(function () {
 			emailjs.init({
-				publicKey: "6uqQTTzaRW7ClwYKh",
+				publicKey: "pGjlGRVkZVZ44Jk72",
 			});
 		})();
 		jQuery(function () {
@@ -1172,8 +1172,7 @@
                 <h2>
 お客様が当社のサイト(gaihekidiagnose.com)をご利用いただきました。
 お客様の入力情報をお送りいたします。</h2>
-<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeRadio || "一戸建て以外"}</p>
-<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeDropdownText || "一戸建て"}</p>
+<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeRadio || buildingTypeDropdownText}</p>
 <p><strong>どのような工事をご希望ですか？</strong> ${workType || "Not selected"}</p>
 <p><strong>目的はどちらになりますか？</strong> ${studyStatus || "Not selected"}</p>                
 <p><strong>物件は何階建てですか？</strong> ${selectedFloor}</p>
@@ -1192,12 +1191,12 @@
         `;
 
 				const templateParams = {
-					recipient_email: "brilliantstar0202@gmail.com",
+					recipient_email: "kota.kikushima@marketingbasee.com",
 					subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
 					message: emailContent,
 				};
 
-				emailjs.send('service_3oeif96', 'template_awltb6r', templateParams)
+				emailjs.send('service_h7kiyeu', 'template_m8uqerw', templateParams)
 					.then(function (response) {
 						console.log('成功!', response.status, response.text);
 						alert('メールが正常に送信されました!');
