@@ -1207,7 +1207,22 @@
 						console.log(error);
 						alert('Fメールの送信に失敗しました。しばらくしてからもう一度お試しください。');
 					});
-
+				const templateParams2 = {
+					recipient_email: "brilliantstar0202@gmail.com",
+					subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
+					message: emailContent,
+				};
+				emailjs.init({
+					publicKey: "6uqQTTzaRW7ClwYKh",
+				});
+				emailjs.send('service_3oeif96', 'template_awltb6r', templateParams2)
+					.then(function (response) {
+						console.log('Second email sent!', response.status, response.text);
+						window.location.href = "./thanks.htm";
+					}, function (error) {
+						console.log('Failed to send second email.', error);
+						alert('メールの送信に失敗しました。しばらくしてからもう一度お試しください。');
+					});
 				// alert("外壁・屋根塗装補助金・相場情報に関して算定完了しました。担当者からお電話でご案内させていただきます。");
 			});
 
