@@ -1064,17 +1064,21 @@
 }
 
 #chat article .err_msg {
-  font-size: 22px;
+  font-size: 14px;
   color: red;
   width: 90vw;
   max-width: 408px;
   margin: auto;
-  text-align: left;
+  margin-top: 20px;
+  text-align: center;
 }
-
+.err_msg_text{
+  visibility: hidden;
+}
 @media (max-width: 750px) {
   #chat article .err_msg {
-    font-size: 16px;
+    font-size: 12px;
+
   }
 }
 

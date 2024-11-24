@@ -487,13 +487,13 @@ function display_newer() {
 
 // 最新の質問またはCVボタンを表示する end
 function validatePhoneNumber(phone) {
-  var pattern = /^(\d{2}|0[5789]0)[\s.-]?[1-9]\d{3}[\s.-]?\d{4}$/; //2-4-4
+  // var pattern = /^(\d{2}|0[5789]0)[\s.-]?[1-9]\d{3}[\s.-]?\d{4}$/; //2-4-4
   var pattern2 = /^(\d{3}|0[5789]0)[\s.-]?[1-9]\d{3}[\s.-]?\d{4}$/; //3-4-4
-  var pattern3 = /^(\d{3}|0[5789]0)[\s.-]?[1-9]\d{2}[\s.-]?\d{4}$/; //3-3-4
+  // var pattern3 = /^(\d{3}|0[5789]0)[\s.-]?[1-9]\d{2}[\s.-]?\d{4}$/; //3-3-4
   if (
-    phone.match(pattern) ||
-    phone.match(pattern2) ||
-    phone.match(pattern3)
+    // phone.match(pattern) ||
+    phone.match(pattern2) 
+    // phone.match(pattern3)
   ) {
     return true;
   }

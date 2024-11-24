@@ -52,7 +52,8 @@
 				</a>
 			</div>
 			<div class="img-info">
-				<a target="_top"> <img src="assets/images/info.png" alt="外壁塗装コンシェルジュ" class="img-responsive" style="scale:0.6;">
+				<a target="_top"> <img src="assets/images/info.png" alt="外壁塗装コンシェルジュ" class="img-responsive"
+						style="scale:0.6;">
 				</a>
 			</div>
 		</header>
@@ -1093,10 +1094,12 @@
 										<div class="form-control">
 											<p>電話番号(ショートメッセージ)</p>
 											<input type="tel" class="form-input" id="form-input-phone"
-												name="data[phone]" placeholder="09012345678">
+												name="data[phone]" placeholder="09012345678(ハイフンなし)">
 										</div>
 									</div>
-									<p class="err_msg phoneErrMsg"></p>
+									<p class="err_msg phoneErrMsg err_msg_text">
+										正しい電話番号を入力してください(例：09012345678)
+									</p>
 								</div>
 							</div>
 							<!-- {{-- チャット欄 end --}} -->
@@ -1106,7 +1109,7 @@
 				<p class="notification_error error-msg" style="text-align: center; color: red"></p>
 
 				<section>
-					<button type="button" class="cv_entry no_display submitToRehome" disabled="disabled">
+					<button type="button" class="cv_entry no_display submitToRehome" onclick="showElement()">
 						<p class="btn-submit-form">結果を見る</p>
 						<p class="icon"><span></span></p>
 					</button>
@@ -1135,100 +1138,113 @@
 	<script type='text/javascript' src='assets/js/global-script.js?ver=5.3.18'></script>
 
 	<!-- Event click to scroll to form -->
+
 	<script>
+		// Function to show error message if phone number is invalid
+		function showElement() {
+			console.log("Validating phone number...");
+			const phoneInput = document.querySelector("#form-input-phone").value;
+			if (!/^\d{11}$/.test(phoneInput)) {
+				console.log("Invalid phone number.");
+				const errorMsg = document.querySelector(".err_msg_text");
+				errorMsg.style.visibility = "visible";
+				setTimeout(function () {
+					errorMsg.style.visibility = "hidden";
+				}, 3000);
+			}
+		}
+
+		// Initialize EmailJS
 		(function () {
-			emailjs.init({
-				publicKey: "pGjlGRVkZVZ44Jk72",
-			});
+			emailjs.init("pGjlGRVkZVZ44Jk72");
 		})();
+
+		// jQuery event listener for form submission
 		jQuery(function () {
 			$(".submitToRehome").click(function (event) {
 				event.preventDefault();
+
+				// Collect form data
+				const phone = $("#form-input-phone").val();
 				const buildingTypeRadio = $("input[name='data[building_type_id]']:checked").data("value");
-				const buildingTypeDropdown = $(".select-box").val();
 				const buildingTypeDropdownText = $(".select-box option:selected").text();
 				const workType = $("input[name='data[work_id_outwall]']:checked").next("label").find("p").text();
 				const studyStatus = $("input[name='data[study_status]']:checked").next("label").find("p").text();
 				const selectedFloor = $("input[name='data[floors]']:checked").val();
 				const selectedSquare = $("input[name='data[rough_square_id]']:checked").next("label").find("p").text();
-				const exteriorWallMaterial = document.querySelector("input[name='data[exterior_wall_material]']:checked");
-				const selectedMaterial = exteriorWallMaterial ? exteriorWallMaterial.value : "未選択";
-				const roofingMaterial = document.querySelector("input[name='data[roofing_material]']:checked");
-				const selectedRoofingMaterial = roofingMaterial ? roofingMaterial.value : "未選択";
-				const exteriorBuildingAge = document.querySelector("input[name='data[building_age_id]']:checked");
-				const selectedBuildingAge = exteriorBuildingAge ? exteriorBuildingAge.value : "未選択";
-				const exteriorEstimating = document.querySelector("input[name='data[estimating]']:checked");
-				const selectedEstimating = exteriorEstimating ? exteriorEstimating.value : "未選択";
-				const exteriorEstimatingAns = document.querySelector("input[name='data[estimating_ans]']:checked");
-				const selectedEstimatingAns = exteriorEstimatingAns ? exteriorEstimatingAns.value : "未選択";
-				const exteriorPrefecture = document.querySelector("input[name='data[prefecture_code]']:checked");
-				const selectedPrefecture = exteriorPrefecture ? exteriorPrefecture.value : "未選択";
+
+				const selectedMaterial = $("input[name='data[exterior_wall_material]']:checked").val() || "未選択";
+				const selectedRoofingMaterial = $("input[name='data[roofing_material]']:checked").val() || "未選択";
+				const selectedBuildingAge = $("input[name='data[building_age_id]']:checked").val() || "未選択";
+				const selectedEstimating = $("input[name='data[estimating]']:checked").val() || "未選択";
+				const selectedEstimatingAns = $("input[name='data[estimating_ans]']:checked").val() || "未選択";
+				const selectedPrefecture = $("input[name='data[prefecture_code]']:checked").val() || "未選択";
+
 				const name = $("#form-input-name").val();
-				const phone = $("#form-input-phone").val();
-				// Handle the form submission
-				console.log("clicked");
+
+				// Prepare email content
 				const emailContent = `
-                <div>
-                <h2>
-お客様が当社のサイト(gaihekidiagnose.com)をご利用いただきました。
-お客様の入力情報をお送りいたします。</h2>
-<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeRadio || buildingTypeDropdownText}</p>
-<p><strong>どのような工事をご希望ですか？</strong> ${workType || "Not selected"}</p>
-<p><strong>目的はどちらになりますか？</strong> ${studyStatus || "Not selected"}</p>                
-<p><strong>物件は何階建てですか？</strong> ${selectedFloor}</p>
-<p><strong>延床面積は、大体どのくらいですか？</strong> ${selectedSquare}</p>
-<p><strong>外壁材はどちらかおわかりでしょうか？</strong> ${selectedMaterial || "Not selected"}</p>
-<p><strong>
-屋根材はどちらかおわかりでしょうか？</strong> ${selectedRoofingMaterial || "Not selected"}</p>
-<p><strong>築年数はどれくらいですか？</strong> ${selectedBuildingAge || "Not selected"}</p>
-<p><strong>相場は、年々上昇しています。施工時期のご希望はありますか？</strong> ${selectedEstimating || "Not selected"}</p>
-<p><strong>これまで工事費用の見積もりをもらったことがありますか？</strong> ${selectedEstimatingAns || "Not selected"}</p>
-<p><strong>物件の所在地はどちらでしょうか？</strong> ${selectedPrefecture || "Not selected"}</p>
+					<div>
+						<h2>お客様が当社のサイト(gaihekidiagnose.com)をご利用いただきました。</h2>
+						<p><strong>対象の物件は一戸建てでしょうか？</strong> ${buildingTypeRadio || buildingTypeDropdownText}</p>
+						<p><strong>どのような工事をご希望ですか？</strong> ${workType || "未選択"}</p>
+						<p><strong>目的はどちらになりますか？</strong> ${studyStatus || "未選択"}</p>
+						<p><strong>物件は何階建てですか？</strong> ${selectedFloor}</p>
+						<p><strong>延床面積は、大体どのくらいですか？</strong> ${selectedSquare}</p>
+						<p><strong>外壁材はどちらかおわかりでしょうか？</strong> ${selectedMaterial}</p>
+						<p><strong>屋根材はどちらかおわかりでしょうか？</strong> ${selectedRoofingMaterial}</p>
+						<p><strong>築年数はどれくらいですか？</strong> ${selectedBuildingAge}</p>
+						<p><strong>施工時期のご希望はありますか？</strong> ${selectedEstimating}</p>
+						<p><strong>これまで工事費用の見積もりをもらったことがありますか？</strong> ${selectedEstimatingAns}</p>
+						<p><strong>物件の所在地はどちらでしょうか？</strong> ${selectedPrefecture}</p>
+						<p><strong>お名前:</strong> ${name}</p>
+						<p><strong>電話番号:</strong> ${phone}</p>
+					</div>
+				`;
 
-<p><strong>お名前:</strong> ${name}</p>
-                <p><strong>電話番号(ショートメッセージ):</strong> ${phone}</p>
-            </div>
-        `;
 
-				const templateParams = {
-					recipient_email: "kota.kikushima@marketingbasee.com",
-					subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
-					message: emailContent,
-				};
+				// Send emails if phone number is valid
+				if (/^\d{11}$/.test(phone)) {
+					const templateParams = {
+						recipient_email: "kota.kikushima@marketingbasee.com",
+						subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
+						message: emailContent,
+					};
 
-				emailjs.send('service_h7kiyeu', 'template_m8uqerw', templateParams)
-					.then(function (response) {
-						console.log('成功!', response.status, response.text);
-						// alert('メールが正常に送信されました!');
-						window.location.href = "./thanks.htm";
+					emailjs.send('service_h7kiyeu', 'template_m8uqerw', templateParams)
+						.then(function (response) {
+							console.log('成功!', response.status, response.text);
+							// alert('メールが正常に送信されました!');
+							window.location.href = "./thanks.htm";
 
-					}, function (error) {
-						console.log('失敗...', error);
-						console.log(error);
-						alert('Fメールの送信に失敗しました。しばらくしてからもう一度お試しください。');
+						}, function (error) {
+							console.log('失敗...', error);
+							console.log(error);
+							alert('Fメールの送信に失敗しました。しばらくしてからもう一度お試しください。');
+						});
+					const templateParams2 = {
+						recipient_email: "brilliantstar0202@gmail.com",
+						subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
+						message: emailContent,
+					};
+					emailjs.init({
+						publicKey: "6uqQTTzaRW7ClwYKh",
 					});
-				const templateParams2 = {
-					recipient_email: "brilliantstar0202@gmail.com",
-					subject: "お問い合わせいただきありがとうございます【リショップナビ外壁塗装・外壁塗装コンシェルジュ】",
-					message: emailContent,
-				};
-				emailjs.init({
-					publicKey: "6uqQTTzaRW7ClwYKh",
-				});
-				emailjs.send('service_3oeif96', 'template_awltb6r', templateParams2)
-					.then(function (response) {
-						console.log('Second email sent!', response.status, response.text);
-						window.location.href = "./thanks.htm";
-					}, function (error) {
-						console.log('Failed to send second email.', error);
-						alert('メールの送信に失敗しました。しばらくしてからもう一度お試しください。');
-					});
-				// alert("外壁・屋根塗装補助金・相場情報に関して算定完了しました。担当者からお電話でご案内させていただきます。");
+					emailjs.send('service_3oeif96', 'template_awltb6r', templateParams2)
+						.then(function (response) {
+							console.log('Second email sent!', response.status, response.text);
+							window.location.href = "./thanks.htm";
+						}, function (error) {
+							console.log('Failed to send second email.', error);
+							alert('メールの送信に失敗しました。しばらくしてからもう一度お試しください。');
+						});
+				} else {
+					showElement();
+				}
 			});
-
-		})
-		const ajaxUrl = "/";
+		});
 	</script>
+
 	<script type='text/javascript' src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type='text/javascript' src='./assets/js/chat.js'></script>
 	<script type='text/javascript' src='./assets/js/click.js'></script>
