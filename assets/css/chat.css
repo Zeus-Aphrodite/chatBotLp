@@ -60,7 +60,7 @@
     width: 90%;
   }
   #chat header .img-info {
-    width: 30vw;
+    width: 25vw;
   }
 
   #chat header .img-info img {
@@ -260,6 +260,9 @@
 }
 .img-info img{
   width: 250px;
+}
+.img-home{
+  text-align: center;
 }
 .img-home img{
   width: 300px;
